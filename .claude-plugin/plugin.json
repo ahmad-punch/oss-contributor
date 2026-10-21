@@ -1,0 +1,15 @@
+{
+  "name": "oss-contributor",
+  "displayName": "OSS Contributor",
+  "version": "0.1.0",
+  "description": "Prepare open source contributions that get merged: policy-aware PR prep, minimal repros, repo scouting, review replies, and a guard against AI co-author trailers where projects forbid them.",
+  "author": {
+    "name": "Ahmad Salman Khan",
+    "email": "ahmadsalman137@gmail.com",
+    "url": "https://github.com/ahmad-punch"
+  },
+  "homepage": "https://github.com/ahmad-punch/oss-contributor",
+  "repository": "https://github.com/ahmad-punch/oss-contributor",
+  "license": "MIT",
+  "keywords": ["open-source", "contributing", "pull-requests", "ai-policy", "disclosure", "git-hooks"]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "oss-contributor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Claude Code plugin for policy-aware open source contributions.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Ahmad Salman Khan <ahmadsalman137@gmail.com>",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "lint": "node scripts/check-layout.mjs",
+    "test": "node --test test/*.test.mjs"
+  }
+}
