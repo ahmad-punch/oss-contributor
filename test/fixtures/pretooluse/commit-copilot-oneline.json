@@ -1,0 +1,9 @@
+{
+  "session_id": "fixture",
+  "hook_event_name": "PreToolUse",
+  "tool_name": "Bash",
+  "tool_input": {
+    "command": "git commit -m \"Handle empty config\\n\\nCo-authored-by: Copilot <175728472+Copilot@users.noreply.github.com>\"",
+    "description": "fixture"
+  }
+}

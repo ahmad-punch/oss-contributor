@@ -1,0 +1,9 @@
+{
+  "session_id": "fixture",
+  "hook_event_name": "PreToolUse",
+  "tool_name": "Bash",
+  "tool_input": {
+    "command": "git commit -s -m \"drm: fix refcount leak\" -m \"Assisted-by: Claude Code (Claude Opus 4.7)\"",
+    "description": "fixture"
+  }
+}
