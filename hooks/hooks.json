@@ -1,5 +1,5 @@
 {
-  "description": "oss-contributor: block AI co-author trailers in repos that opt in",
+  "description": "oss-contributor: block AI co-author trailers where a repo opts in, and remind of the project's AI policy at session start",
   "hooks": {
     "PreToolUse": [
       {
@@ -10,6 +10,18 @@
             "if": "Bash(git *)",
             "command": "node",
             "args": ["${CLAUDE_PLUGIN_ROOT}/hooks/block-ai-trailers.mjs"],
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": ["${CLAUDE_PLUGIN_ROOT}/hooks/policy-reminder.mjs"],
             "timeout": 10
           }
         ]
