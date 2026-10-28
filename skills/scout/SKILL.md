@@ -2,6 +2,7 @@
 name: scout
 description: Give a go or no-go on contributing to a GitHub repository before any code is written. Checks whether outsiders can open PRs at all, how often outside PRs get merged, whether good-first-issues are stale or claimed, and what the AI and contribution policy files say. Use when choosing a project or an issue to work on.
 argument-hint: "<owner/repo or GitHub URL>"
+user-invocable: false
 allowed-tools: Read Grep Glob Bash(gh api *) Bash(gh repo view *) Bash(gh issue list *) Bash(gh pr list *) Bash(date *)
 ---
 

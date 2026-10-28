@@ -2,6 +2,7 @@
 name: review-reply
 description: Help the author answer review comments on their open pull request in their own voice. Fetches unresolved review threads, groups them, works out what each reviewer is asking for, makes or proposes the code changes, and drafts short reply notes for the author to rewrite and post personally. Use when a PR has new review comments. Never posts replies or pastes model output into the thread.
 argument-hint: "[PR number or URL]"
+user-invocable: false
 allowed-tools: Read Grep Glob Edit Bash(gh pr view *) Bash(gh pr diff *) Bash(gh api *) Bash(git status *) Bash(git diff *) Bash(git log *) Bash(gh api user *)
 ---
 

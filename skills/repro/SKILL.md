@@ -2,6 +2,7 @@
 name: repro
 description: Turn a GitHub issue into the smallest failing test that reproduces it, written in the project's own test style, then run it and report the result. Use when starting work on a bug report, before writing any fix, and before deciding whether a PR is warranted. Never opens a PR; a repro is evidence for the issue thread, and a fix waits until a maintainer acknowledges the bug.
 argument-hint: "<issue URL or number>"
+user-invocable: false
 allowed-tools: Read Grep Glob Write Edit Bash(gh issue view *) Bash(gh repo view *) Bash(git status *) Bash(git log *) Bash(git diff *) Bash(git rev-parse *)
 ---
 

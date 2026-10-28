@@ -2,6 +2,7 @@
 name: pr-prep
 description: Prepare a pull request for an open source project so it complies with the project's contribution and AI policies. Reads CONTRIBUTING.md, AI_POLICY.md, AGENTS.md, the PR template, CODEOWNERS and the linked issue, produces a compliance checklist (policy stance, disclosure wording and location, forbidden or required trailers, gates, test and lint commands), then drafts the PR title and description in the author's voice. Use before opening any PR to a repository you do not maintain.
 argument-hint: "[issue number or URL]"
+user-invocable: false
 allowed-tools: Read Grep Glob Bash(git status *) Bash(git log *) Bash(git diff *) Bash(git rev-parse *) Bash(git remote *) Bash(gh issue view *) Bash(gh repo view *) Bash(gh api user *)
 ---
 
