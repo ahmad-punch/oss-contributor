@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Validate JSON manifests
+        run: |
+          for f in .claude-plugin/plugin.json .claude-plugin/marketplace.json hooks/hooks.json test/fixtures/*/*.json; do
+            jq empty "$f" || { echo "Invalid JSON: $f"; exit 1; }
+          done
+
+      - name: Lint plugin layout
+        run: npm run lint
+
+      - name: Unit and fixture tests
+        run: npm test
+
+      - name: Run hooks against fixtures
+        shell: bash
+        run: |
+          set -u
+          repo="$RUNNER_TEMP/opted-in"
+          mkdir -p "$repo" && git init -q "$repo" && touch "$repo/.no-ai-trailers"
+          run_hook() { jq --arg cwd "$repo" '.cwd = $cwd' "test/fixtures/$1.json" | node "hooks/$2"; }
+
+          set +e
+          run_hook pretooluse/commit-claude-heredoc block-ai-trailers.mjs 2>/dev/null
+          blocked=$?
+          run_hook pretooluse/commit-human-coauthor block-ai-trailers.mjs
+          allowed=$?
+          set -e
+          [ "$blocked" -eq 2 ] || { echo "expected exit 2 for an AI trailer, got $blocked"; exit 1; }
+          [ "$allowed" -eq 0 ] || { echo "expected exit 0 for a human co-author, got $allowed"; exit 1; }
+
+          cp test/fixtures/policies/disclose-pr/CONTRIBUTING.md "$repo/"
+          run_hook sessionstart/startup policy-reminder.mjs | jq -e '.hookSpecificOutput.hookEventName == "SessionStart"'
